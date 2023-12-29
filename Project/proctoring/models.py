@@ -1,0 +1,30 @@
+from  proctoring import app
+from proctoring import db,app
+from proctoring import db,app,login_manager
+from flask_login import UserMixin
+
+from sqlalchemy import ForeignKey
+# from flask_table import Table, Col, LinkCol
+# from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+
+@login_manager.user_loader
+def load_user(id):
+    return Register.query.get(int(id))
+
+
+
+class Register(db.Model, UserMixin):
+    
+    id=db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(80))
+    password = db.Column(db.String(80))
+    usertype = db.Column(db.String(80))
+    name = db.Column(db.String(80))
+    contact = db.Column(db.String(80))
+    address = db.Column(db.String(80))
+    qualification = db.Column(db.String(80))
+    experience = db.Column(db.String(80))
+    status = db.Column(db.String(80),default='NULL')
+    cls = db.Column(db.String(80))
+    div = db.Column(db.String(80))
+    sem = db.Column(db.String(80))
