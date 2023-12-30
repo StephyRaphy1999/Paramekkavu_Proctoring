@@ -32,6 +32,14 @@ def index():
 def about():
     return render_template("about.html")
 
-@app.route('/gg',methods=['GET', 'POST'])
-def gg():
-    return render_template("gg.html")
+@app.route('/login',methods=['GET', 'POST'])
+def login():
+    return render_template("login.html")
+
+@app.route('/contact',methods=['GET', 'POST'])
+def contact():
+    return render_template("contact.html")
+
+@app.route('/register',methods=['GET', 'POST'])
+def register():
+    return render_template("register.html")
