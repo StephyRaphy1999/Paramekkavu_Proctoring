@@ -23,20 +23,20 @@
 <h1>Register</h1>
 </div>
 <div class="w3ls-form">
-<form action="#" medthod="post">
+<form method="POST">
 		<div class="w3l-last-grid1">
 			<div class="w3l-grid1">
 				<label class="text">First name</label>
 				<div class="w3l-div">
 					<i class="fa fa-user" aria-hidden="true"></i>
-					<input type="text" name="name" placeholder="first name" required=""/>
+					<input type="text" name="fname" placeholder="first name" required=""/>
 				</div>
 			</div> 
 			<div class="w3l-grid2">
 			<label class="text">Last name</label>
 			<div class="w3l-div">
 				<i class="fa fa-user" aria-hidden="true"></i>
-				<input type="text" name="name" placeholder="last name" required=""/>
+				<input type="text" name="lname" placeholder="last name" required=""/>
 			</div>
 			</div>
 			<div class="clear"></div>
@@ -45,11 +45,11 @@
 			<div class="w3l-grid1">
 				<label class="text">gender</label>
 				<div class="w3l-div">
-					<i class="fa fa-users" aria-hidden="true"></i>
-					<select class="form-control" required="">
-						<option>gender</option>
-						<option>Male</option>
-						<option>Female</option>
+					<i class="" aria-hidden="true"></i>
+					<select class="form-contro3" required="" name="gender">
+						<option disabled hidden selected>Select your gender</option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
 					</select>
 				</div>
 			</div>	
@@ -57,7 +57,7 @@
 				<label class="text">date of birth</label>
 				<div class="w3l-div">
 					<i class="fa fa-calendar" aria-hidden="true"></i>
-					<input type="text" class="date" id="datepicker" name="date of birth" placeholder="dob" value="MM/DD/YYYY" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" required=""/>
+					<input type="text" class="date" id="datepicker" name="dob" placeholder="dob" value="MM/DD/YYYY" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" required=""/>
 				</div>	
 			</div>	
 			<div class="clear"></div>
@@ -66,7 +66,7 @@
 			<div class="w3l-grid1">
 				<label class="text">Your Email</label>
 				<div class="w3l-div">
-					<i class="fa fa-envelope-o" aria-hidden="true"></i>
+					<i class="fa fa-envelope" aria-hidden="true"></i>
 					<input type="email" name="email" placeholder="e-mail" required=""/>
 				</div>
 			</div>
@@ -81,17 +81,17 @@
 		</div>
 		<div class="w3l-last-grid1">
 			<div class="w3l-grid1">	
-				<label class="text">Admission Number</label>
+				<label class="text">Password</label>
 				<div class="w3l-div">
-					<i class="fa fa-location-arrow" aria-hidden="true"></i>
-					<input type="text" name="admission" placeholder="" required=""/>
+					<i class="fa-password" aria-hidden="true"></i>
+					<input type="text" name="password" placeholder="Enter the Password" required=""/>
 				</div>
 			</div>
 			<div class="w3l-grid2">	
-				<label class="text">Class</label>
+				<label class="text">Admission Number</label>
 				<div class="w3l-div">
-					<i class="fa fa-map-marker" aria-hidden="true"></i>
-					<input type="text" name="class" placeholder="" required=""/>
+					<i class="" aria-hidden="true"></i>
+					<input type="text" name="admission" placeholder="Enter your admission number " required=""/>
 				</div>
 			</div>
 			<div class="clear"></div>
@@ -120,10 +120,11 @@
 			<label class="text">Department<span></span></label>
 				<div class="w3l-div">
 				<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-					<select class="form-contro3" required="">
-						<option>Commerce</option>
-						<option>Computer Science</option>
-						<option>Electronics</option>
+					<select class="form-contro3" required="" name="department">
+						<option disabled hidden selected>Select your department</option>
+						<option value="department">Commerce</option>
+						<option value="department">Computer Science</option>
+						<option value="department">Electronics</option>
 					</select>
 				</div>
 		</div>	
@@ -131,13 +132,14 @@
 			<div class="w3l-grid2">
 				<div class="w3l-div">
 					<i class="fa fa-book" aria-hidden="true"></i>
-					<select class="form-contro2" required="">
-						<option>Sem 1</option>
-						<option>Sem 2</option>
-						<option>Sem 3</option>
-						<option>Sem 4</option>
-						<option>Sem 5</option>
-						<option>Sem 6</option>
+					<select class="form-contro2" required="" name="sem">
+						<option value="" disabled hidden selected>Select the semester</option>
+						<option value="sem">Sem 1</option>
+						<option value="sem">Sem 2</option>
+						<option value="sem">Sem 3</option>
+						<option value="sem">Sem 4</option>
+						<option value="sem">Sem 5</option>
+						<option value="sem">Sem 6</option>
 					</select>
 				</div>
 			</div>

@@ -32,14 +32,67 @@ def index():
 def about():
     return render_template("about.html")
 
-@app.route('/login',methods=['GET', 'POST'])
+@app.route('/login',methods=['GET','POST'])
 def login():
+    if request.method=="POST":
+        email=request.form['email']
+        password=request.form['password']
+
+
+        admin =Register.query.filter_by(email=email, password=password,usertype= 'admin').first()
+        teacher =Register.query.filter_by(email=email, password=password,usertype= 'teacher').first()
+        student =Register.query.filter_by(email=email, password=password,usertype= 'student').first()
+           
+           
+        if admin:
+            login_user(admin)
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect('/') 
+        
+        elif teacher:
+
+            login_user(teacher)
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect('/') 
+        
+        elif student:
+
+            login_user(student)
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect('/') 
+
+        else:
+            d="Invalid Username or Password!"
+            return render_template("login",d=d)
     return render_template("login.html")
 
 @app.route('/contact',methods=['GET', 'POST'])
 def contact():
-    return render_template("contact.html")
+    return render_template("contact")
 
 @app.route('/register',methods=['GET', 'POST'])
-def register():
+def add_register():
+
+    if request.method == 'POST':
+
+
+        fname = request.form['fname']
+        lname = request.form['lname']
+        gender = request.form['gender']
+        dob = request.form['dob']
+        email = request.form['email']
+        contact= request.form['contact']
+        password = request.form['password']
+        admission = request.form['admission']
+        department = request.form['department']
+        sem = request.form['sem']
+        a = Register.query.filter_by(email=email).first()
+        if a:
+            return render_template("add_user.html",alert=True)
+        else:
+
+            my_data = Register(fname=fname,lname=lname,gender=gender,dob=dob,email=email,contact=contact,password=password,admission=admission,department=department,sem=sem,usertype="student")
+            db.session.add(my_data) 
+            db.session.commit()
+            return redirect('/register')
     return render_template("register.html")

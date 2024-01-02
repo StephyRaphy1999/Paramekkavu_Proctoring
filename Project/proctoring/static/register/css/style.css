@@ -28,7 +28,7 @@ nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 /*--end reset--*/
 body{
-	background:url(../images/bg.jpg)no-repeat 0px 0px;
+	background:url(../images/tech2.jpg)no-repeat 0px 0px;
 	background-size: cover;
 	background-position: 50% 50%;
 }
