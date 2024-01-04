@@ -27,5 +27,7 @@ class Register(db.Model, UserMixin):
     department = db.Column(db.String(80))
     sem = db.Column(db.String(80))
     usertype = db.Column(db.String(80))
+    qualification = db.Column(db.String(80))
+    experience = db.Column(db.String(80))
     status = db.Column(db.String(80),default='NULL')
     

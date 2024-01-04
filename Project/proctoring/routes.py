@@ -46,24 +46,30 @@ def login():
            
         if admin:
             login_user(admin)
+            print(admin.usertype)
+            session['ut']=admin.usertype
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect('/') 
         
         elif teacher:
 
             login_user(teacher)
+            print(teacher.usertype)
+            session['ut']=teacher.usertype
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect('/') 
         
         elif student:
 
             login_user(student)
+            print(student.usertype)
+            session['ut']=student.usertype
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect('/') 
 
         else:
             d="Invalid Username or Password!"
-            return render_template("login",d=d)
+            return render_template("login")
     return render_template("login.html")
 
 @app.route('/contact',methods=['GET', 'POST'])
@@ -88,7 +94,7 @@ def add_register():
         sem = request.form['sem']
         a = Register.query.filter_by(email=email).first()
         if a:
-            return render_template("add_user.html",alert=True)
+            return render_template("register.html",alert=True)
         else:
 
             my_data = Register(fname=fname,lname=lname,gender=gender,dob=dob,email=email,contact=contact,password=password,admission=admission,department=department,sem=sem,usertype="student")
@@ -96,3 +102,20 @@ def add_register():
             db.session.commit()
             return redirect('/register')
     return render_template("register.html")
+
+@app.route('/logout')
+@login_required
+def logout():
+    print("Before logout code")
+    print("----11----")
+    try:
+        print("----1----")
+        logout_user()
+        session.clear()  # Clear the session data
+        print("Logout successful")
+        return redirect('/')  # Redirect to the home page or another page after logout
+        print("Before logout code")
+    except Exception as e:
+        print("------2--------")
+        print("Logout failed with error:", str(e))
+        return redirect('/')
