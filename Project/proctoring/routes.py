@@ -32,6 +32,11 @@ def index():
 def about():
     return render_template("about.html")
 
+@app.route('/view',methods=['GET', 'POST'])
+def view():
+    a =Register.query.filter_by(usertype="teacher").all()
+    return render_template("view.html",a=a)
+
 @app.route('/login',methods=['GET','POST'])
 def login():
     if request.method=="POST":
@@ -102,6 +107,49 @@ def add_register():
             db.session.commit()
             return redirect('/register')
     return render_template("register.html")
+
+
+
+@app.route('/tregister',methods=['GET', 'POST'])
+def add_tregister():
+
+    if request.method == 'POST':
+
+
+        fname = request.form['fname']
+        lname = request.form['lname']
+        gender = request.form['gender']
+        dob = request.form['dob']
+        email = request.form['email']
+        contact= request.form['contact']
+        password = request.form['password']
+        experience = request.form['experience']
+        department = request.form['department']
+        qualification = request.form['qualification']
+        a = Register.query.filter_by(email=email).first()
+        if a:
+            return render_template("register.html",alert=True)
+        else:
+
+            my_data = Register(fname=fname,lname=lname,gender=gender,dob=dob,email=email,contact=contact,password=password,experience=experience,department=department,qualification=qualification,usertype="teacher")
+            db.session.add(my_data) 
+            db.session.commit()
+            return redirect('/tregister')
+    return render_template("tregister.html")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route('/logout')
 @login_required

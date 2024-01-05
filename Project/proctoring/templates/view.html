@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+
+<html>
+
+
+ <head><title>Teacher details</title></head>
+ <link rel="stylesheet" href="../static/css/view.css">
+ <body>
+    <h1 align="center"><u>TEACHERS DETAIL</u></h1>
+    <table border="3" align="center" height="600px">
+        <tr>
+            <th> FIRST NAME</th>
+            <th> LAST NAME</th>
+            <th> GENDER</th>
+            <th> DATE OF BIRTH</th>
+            <th> EMAIL</th>
+            <th> CONTACT</th>
+            <th> DEPARTMENT</th>
+            <th> QUALIFICATION</th>
+            <th> EXPERIENCE</th>
+        </tr>
+        {%for i in a%}
+        <tr>
+            <td>{{i.fname}}</td>
+            <td>{{i.lname}}</td>
+            <td>{{i.gender}}</td>
+            <td>{{i.dob}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.contact}}</td>
+            <td>{{i.department}}</td>
+            <td>{{i.qualification}}</td>
+            <td>{{i.experience}}</td>
+        </tr>
+      {%endfor%}
+    </table>
+ </body>
+</html>
+
+{% endblock %}
