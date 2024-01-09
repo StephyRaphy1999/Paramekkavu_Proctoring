@@ -32,6 +32,39 @@ def index():
 def about():
     return render_template("about.html")
 
+@app.route('/edittregister/<int:id>',methods=['GET', 'POST'])
+def edittregister(id):
+    a=Register.query.get_or_404(id)
+
+    if request.method == 'POST':
+        a.fname = request.form['fname']
+        a.lname= request.form['lname']
+        a.gender = request.form['gender']
+        a.dob = request.form['dob']
+        a.email = request.form['email']
+        a.contact= request.form['contact']
+        a.password = request.form['password']
+        a.admission = request.form['admission']
+        a.department = request.form['department']
+        a.sem = request.form['sem']
+        db.session.commit()
+        return redirect('/view')
+
+    return render_template("edittregister.html",a=a)
+
+@app.route('/delete_teacher/<int:id>', methods = ['GET','POST'])
+@login_required
+def delete_teacher(id):
+    delet = Register.query.get_or_404(id)
+
+    try:
+        db.session.delete(delet)
+        db.session.commit()
+        return redirect('/view_teachers')
+    except:
+        return 'There was a problem deleting that task'
+
+
 @app.route('/view',methods=['GET', 'POST'])
 def view():
     a =Register.query.filter_by(usertype="teacher").all()

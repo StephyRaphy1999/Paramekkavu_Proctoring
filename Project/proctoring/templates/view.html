@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} 
 {% block content %}
 
 
@@ -20,6 +20,8 @@
             <th> DEPARTMENT</th>
             <th> QUALIFICATION</th>
             <th> EXPERIENCE</th>
+            <th> ACTION</th>
+            <th> DELETE</th>
         </tr>
         {%for i in a%}
         <tr>
@@ -32,6 +34,8 @@
             <td>{{i.department}}</td>
             <td>{{i.qualification}}</td>
             <td>{{i.experience}}</td>
+            <td><a href="/edittregister/{{i.id}}">Edit</a></td>
+            <td><a href="">Delete</a></td>
         </tr>
       {%endfor%}
     </table>
