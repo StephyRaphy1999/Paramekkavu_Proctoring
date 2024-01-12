@@ -44,15 +44,16 @@ def edittregister(id):
         a.email = request.form['email']
         a.contact= request.form['contact']
         a.password = request.form['password']
-        a.admission = request.form['admission']
         a.department = request.form['department']
-        a.sem = request.form['sem']
+        a.qualification = request.form['qualification']
+        a.experience = request.form['experience']
+
         db.session.commit()
         return redirect('/view')
 
     return render_template("edittregister.html",a=a)
 
-@app.route('/delete_teacher/<int:id>', methods = ['GET','POST'])
+@app.route('/tdelete/<int:id>', methods = ['GET','POST'])
 @login_required
 def delete_teacher(id):
     delet = Register.query.get_or_404(id)
@@ -60,7 +61,7 @@ def delete_teacher(id):
     try:
         db.session.delete(delet)
         db.session.commit()
-        return redirect('/view_teachers')
+        return redirect('/view')
     except:
         return 'There was a problem deleting that task'
 

@@ -30,4 +30,17 @@ class Register(db.Model, UserMixin):
     qualification = db.Column(db.String(80))
     experience = db.Column(db.String(80))
     status = db.Column(db.String(80),default='NULL')
+
+
+
+
+class Exam(db.Model, UserMixin):
+    
+    id=db.Column(db.Integer, primary_key=True)
+    subname = db.Column(db.String(80))
+    date = db.Column(db.String(80))
+    time = db.Column(db.String(80))
+    sem = db.Column(db.String(80))
+    dept = db.Column(db.String(80))
+  
     

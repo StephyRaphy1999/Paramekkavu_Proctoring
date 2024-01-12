@@ -10,7 +10,7 @@
  <body>
     <h1 align="center"><u>TEACHERS DETAIL</u></h1>
     <table border="3" align="center" height="600px">
-        <tr>
+        <tr align="center">
             <th> FIRST NAME</th>
             <th> LAST NAME</th>
             <th> GENDER</th>
@@ -24,7 +24,7 @@
             <th> DELETE</th>
         </tr>
         {%for i in a%}
-        <tr>
+        <tr align="center">
             <td>{{i.fname}}</td>
             <td>{{i.lname}}</td>
             <td>{{i.gender}}</td>
@@ -35,7 +35,7 @@
             <td>{{i.qualification}}</td>
             <td>{{i.experience}}</td>
             <td><a href="/edittregister/{{i.id}}">Edit</a></td>
-            <td><a href="">Delete</a></td>
+            <td><a href="/tdelete/{{i.id}}">Delete</a></td>
         </tr>
       {%endfor%}
     </table>
