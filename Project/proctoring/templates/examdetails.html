@@ -1,0 +1,63 @@
+{% extends 'layout.html' %} 
+{% block content %}
+
+
+<html>
+
+
+ <head><title>Exam Details</title></head>
+ <link rel="stylesheet" href="../static/css/view.css">
+ <body>
+    <h1 align="center"><u>EXAM DETAILS</u></h1>
+    {% if session['ut'] == "teacher" %}
+    <table border="3" align="center" height="600px">
+        <tr align="center">
+            <th> SUBJECT NAME</th>
+            <th> DATE</th>
+            <th> TIME</th>
+            <th> DURATION</th>
+            <th> DEPARTMENT</th>
+            <th> SEMESTER</th>
+            <th> ACTION</th>
+            <th> DELETE</th>
+        </tr>
+        {%for i in a%}
+        <tr align="center">
+            <td>{{i.subname}}</td>
+            <td>{{i.date}}</td>
+            <td>{{i.time}}</td>
+            <td>{{i.duration}}</td>
+            <td>{{i.dept}}</td>
+            <td>{{i.sem}}</td>
+            <td><a href="/editexam/{{i.id}}">Edit</a></td>
+            <td><a href="/examdelete/{{i.id}}">Delete</a></td>
+        </tr>
+      {%endfor%}
+    </table>
+
+    {%else%}
+    <table border="3" align="center" height="600px">
+        <tr align="center">
+            <th> SUBJECT NAME</th>
+            <th> DATE</th>
+            <th> TIME</th>
+            <th> DURATION</th>
+            <th> DEPARTMENT</th>
+            <th> SEMESTER</th>
+        </tr>
+        {%for i in b%}
+        <tr align="center">
+            <td>{{i.subname}}</td>
+            <td>{{i.date}}</td>
+            <td>{{i.time}}</td>
+            <td>{{i.duration}}</td>
+            <td>{{i.dept}}</td>
+            <td>{{i.sem}}</td>
+        </tr>
+      {%endfor%}
+    </table>
+{%endif%}
+ </body>
+</html>
+
+{% endblock %}

@@ -103,6 +103,8 @@ def login():
             login_user(student)
             print(student.usertype)
             session['ut']=student.usertype
+            # session['department']=student.department
+            # session['sem']=student.semester
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect('/') 
 
@@ -113,7 +115,7 @@ def login():
 
 @app.route('/contact',methods=['GET', 'POST'])
 def contact():
-    return render_template("contact")
+    return render_template("contact.html")
 
 @app.route('/register',methods=['GET', 'POST'])
 def add_register():
@@ -172,7 +174,69 @@ def add_tregister():
     return render_template("tregister.html")
 
 
+@app.route('/scheduleexam',methods=['GET', 'POST'])
+def scheduleexam():
 
+    if request.method == 'POST':
+        subname = request.form['subname']
+        time = request.form['time']
+        duration = request.form['duration']
+        date = request.form['date']
+        dept = request.form['dept']
+        sem = request.form['sem']
+
+
+        my_data = Exam(subname=subname,time=time,duration=duration,date=date,dept=dept,sem=sem)
+        db.session.add(my_data) 
+        db.session.commit()
+        return redirect('/scheduleexam')
+    return render_template("scheduleexam.html")
+
+
+@app.route('/examdetails',methods=['GET', 'POST'])
+def examdetails():
+
+    a =Exam.query.all()
+    uid= current_user.id
+    print("uid",uid)
+    rid = Register.query.filter_by(id = uid).first()
+    print("rid",rid.id)
+    print("user_semester",rid.sem)
+    print("user_department",rid.department)
+    b =Exam.query.filter_by(sem=rid.sem,dept=rid.department).all()
+    print (b)
+    return render_template("examdetails.html",a=a,b=b)
+
+
+@app.route('/editexam/<int:id>',methods=['GET', 'POST'])
+def editexam(id):
+    a=Exam.query.get_or_404(id)
+
+    if request.method == 'POST':
+        a.subname = request.form['subname']
+        a.date = request.form['date']
+        a.time = request.form['time']
+        a.duration = request.form['duration']
+        a.dept = request.form['dept']
+        a.sem = request.form['sem']
+        
+
+        db.session.commit()
+        return redirect('/examdetails')
+
+    return render_template("editexam.html",a=a)
+
+@app.route('/examdelete/<int:id>', methods = ['GET','POST'])
+@login_required
+def delete_exam(id):
+    delet = Exam.query.get_or_404(id)
+
+    try:
+        db.session.delete(delet)
+        db.session.commit()
+        return redirect('/examdetails')
+    except:
+        return 'There was a problem deleting that task'
 
 
 

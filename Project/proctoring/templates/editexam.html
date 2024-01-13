@@ -28,121 +28,116 @@
 </head>
 <body>
 <div class="w3l-head">
-<h1>Edit details</h1>
+<h1>Edit exam</h1>
 </div>
 <div class="w3ls-form">
 <form method="POST">
 		<div class="w3l-last-grid1">
 			<div class="w3l-grid1">
-				<label class="text">First name</label>
+				<label class="text">Subject</label>
 				<div class="w3l-div">
-					<i class="fa fa-user" aria-hidden="true"></i>
-					<input type="text" name="fname" placeholder="first name" required="" value="{{a.fname}}"/>
+					<i class="" aria-hidden="true"></i>
+					<input type="text" name="subname" placeholder="Subject name" required="" value="{{a.subname}}"/>
 				</div>
 			</div> 
 			<div class="w3l-grid2">
-			<label class="text">Last name</label>
-			<div class="w3l-div">
-				<i class="fa fa-user" aria-hidden="true"></i>
-				<input type="text" name="lname" placeholder="last name" required="" value="{{a.lname}}"/>
-			</div>
+				<label class="text">Date</label>
+				<div class="w3l-div">
+					<i class="fa fa-calendar" aria-hidden="true"></i>
+					<input type="text" class="date" id="datepicker" name="date" placeholder="Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" required="" value="{{a.date}}"/>
+				</div>
 			</div>
 			<div class="clear"></div>
 		</div>	
 		<div class="w3l-last-grid1">
 			<div class="w3l-grid1">
-				<label class="text">Gender</label>
+				<label class="text">Time</label>
 				<div class="w3l-div">
 					<i class="" aria-hidden="true"></i>
-					<input type="text" name="gender" placeholder="Enter your gender" required="" value="{{a.gender}}"/>
+					<input type="text" name="time" placeholder="Time" required="" value="{{a.time}}"/>
 				</div>
-			</div>
+			</div>	
+			<label class="text">Duration</label>
 			<div class="w3l-grid2">
-				<label class="text"></label>
 				<div class="w3l-div">
-					<i class="fa fa-calendar" aria-hidden="true"></i>
-					<input type="text" class="date" id="datepicker" name="dob" placeholder="dob"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" required="" value="{{a.dob}}"/>
-				</div>	
+					<i class="" aria-hidden="true"></i>
+					<input type="text" name="duration" placeholder="Duration" required="" value="{{a.duration}}"/>
+				</div>
 			</div>	
 			<div class="clear"></div>
 		</div>
-		<div class="w3l-last-grid1">
+		<!-- <div class="w3l-last-grid1">
 			<div class="w3l-grid1">
 				<label class="text">Your Email</label>
 				<div class="w3l-div">
 					<i class="fa fa-envelope" aria-hidden="true"></i>
-					<input type="email" name="email" placeholder="e-mail" required="" value="{{a.email}}"/>
+					<input type="email" name="email" placeholder="e-mail" required=""/>
 				</div>
 			</div>
 			<div class="w3l-grid2">
 				<label class="text">phone number</label>
 				<div class="w3l-div">
 					<i class="fa fa-phone" aria-hidden="true"></i>
-					<input type="text" name="contact" placeholder="phone number" required="" value="{{a.contact}}"/>
+					<input type="text" name="contact" placeholder="phone number" required=""/>
 				</div>
 			</div>
 			<div class="clear"></div>
-		</div>
-		<div class="w3l-last-grid1">
+		</div> -->
+		<!-- <div class="w3l-last-grid1">
 			<div class="w3l-grid1">	
 				<label class="text">Password</label>
 				<div class="w3l-div">
 					<i class="fa-password" aria-hidden="true"></i>
-					<input type="text" name="password" placeholder="Enter the Password" required="" value="{{a.password}}"/>
+					<input type="text" name="password" placeholder="Enter the Password" required=""/>
 				</div>
 			</div>
 			<div class="w3l-grid2">	
-				<label class="text">Experience</label>
+				<label class="text">Admission Number</label>
 				<div class="w3l-div">
 					<i class="" aria-hidden="true"></i>
-					<input type="text" name="experience" placeholder="Enter your experience in years" required="" value="{{a.experience}}"/>
+					<input type="text" name="admission" placeholder="Enter your admission number " required=""/>
 				</div>
 			</div>
 			<div class="clear"></div>
-		</div>
+		</div> -->
 		
-		<div class="w3l-right-grid1">
+		<!-- <div class="w3l-right-grid1">
 			<div class="w3l-grid1">
-				<label class="text">Qualification</label>
+				<label class="text">state</label>
 				<div class="w3l-div">
-					<i class="" aria-hidden="true"></i>
-					<input type="text" name="qualification" placeholder="Enter your qualification" required="" value="{{a.qualification}}"/>
+					<i class="fa fa-map-marker" aria-hidden="true"></i>
+					<input type="text" name="state" placeholder="state/province" required=""/>
 				</div>
 			</div>
-			<!-- <div class="w3l-grid2">
+			<div class="w3l-grid2">
 				<label class="text">zipcode</label>
 				<div class="w3l-div">
 					<i class="fa fa-address-card-o" aria-hidden="true"></i>
 					<input type="text" name="zipcode" placeholder="postal" required=""/>
 				</div>
 			</div>
-			<div class="clear"></div> -->
-		</div>
+			<div class="clear"></div>
+		</div> -->
 		
 		<div class="w3l-right-grid1">
-			<div class="w3l-grid1">
-				<label class="text">Department</label>
+		<div class="w3l-grid1">
+			<label class="text">Department</label>
 				<div class="w3l-div">
 					<i class="" aria-hidden="true"></i>
-					<input type="text" name="department" placeholder="Enter your department" required="" value="{{a.department}}"/>
+					<input type="text" name="dept" placeholder="Enter your department" required="" value="{{a.dept}}"/>
+				</div>
+		</div>	
+        
+        <div class="w3l-grid1">
+        <label class="text">Semester</label>
+        <div class="w3l-div">
+         <input type="text" name="sem" placeholder="Semester" required="" value="{{a.sem}}"/>
 				</div>
 			</div>
-			<!-- <label class="text">Qualification</label>
-			<div class="w3l-grid2">
-				<div class="w3l-div">
-					<i class="fa fa-book" aria-hidden="true"></i>
-					<select class="form-contro2" required="" name="sem">
-						<option value="" disabled hidden selected></option>
-						<option value="sem">Sem 1</option>
-						<option value="sem">Sem 2</option>
-						<option value="sem">Sem 3</option>
-					</select>
-				</div>
-			</div> -->
 		</div>
 		<div class="clear"></div>
 		<div class="w3ls-submit">
-			<input type="submit" value="Submit">
+			<input type="submit" value="SUBMIT">
 		</div>
 </form>
 </div>

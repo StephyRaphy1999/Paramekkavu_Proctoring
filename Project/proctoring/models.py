@@ -40,6 +40,7 @@ class Exam(db.Model, UserMixin):
     subname = db.Column(db.String(80))
     date = db.Column(db.String(80))
     time = db.Column(db.String(80))
+    duration = db.Column(db.String(80))
     sem = db.Column(db.String(80))
     dept = db.Column(db.String(80))
   
