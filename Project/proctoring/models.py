@@ -4,6 +4,7 @@ from proctoring import db,app,login_manager
 from flask_login import UserMixin
 
 from sqlalchemy import ForeignKey
+from sqlalchemy.orm import relationship 
 # from flask_table import Table, Col, LinkCol
 # from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
@@ -37,6 +38,8 @@ class Register(db.Model, UserMixin):
 class Exam(db.Model, UserMixin):
     
     id=db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, ForeignKey('register.id'))
+    user = relationship('Register', foreign_keys=[user_id])
     subname = db.Column(db.String(80))
     date = db.Column(db.String(80))
     time = db.Column(db.String(80))

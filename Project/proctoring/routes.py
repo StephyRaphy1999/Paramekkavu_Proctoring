@@ -178,6 +178,7 @@ def add_tregister():
 def scheduleexam():
 
     if request.method == 'POST':
+        user_id = current_user.id
         subname = request.form['subname']
         time = request.form['time']
         duration = request.form['duration']
@@ -186,7 +187,7 @@ def scheduleexam():
         sem = request.form['sem']
 
 
-        my_data = Exam(subname=subname,time=time,duration=duration,date=date,dept=dept,sem=sem)
+        my_data = Exam(user_id=user_id,subname=subname,time=time,duration=duration,date=date,dept=dept,sem=sem)
         db.session.add(my_data) 
         db.session.commit()
         return redirect('/scheduleexam')
