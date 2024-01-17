@@ -44,6 +44,7 @@
             <th> DURATION</th>
             <th> DEPARTMENT</th>
             <th> SEMESTER</th>
+            <th> REGISTER</th>
         </tr>
         {%for i in b%}
         <tr align="center">
@@ -53,6 +54,7 @@
             <td>{{i.duration}}</td>
             <td>{{i.dept}}</td>
             <td>{{i.sem}}</td>
+            <td><a href="/examregister/{{i.id}}">Register</a></td>
         </tr>
       {%endfor%}
     </table>

@@ -197,7 +197,7 @@ def scheduleexam():
 @app.route('/examdetails',methods=['GET', 'POST'])
 def examdetails():
 
-    a =Exam.query.all()
+    a =Exam.query.filter_by(user_id=current_user.id).all()
     uid= current_user.id
     print("uid",uid)
     rid = Register.query.filter_by(id = uid).first()
@@ -241,6 +241,22 @@ def delete_exam(id):
 
 
 
+
+@app.route('/examregister/<int:id>',methods=['GET', 'POST'])
+def examregister(id):
+    
+    a = Exam.query.get_or_404(id)
+    exam_id = a.id
+    print(exam_id)
+
+    b = current_user.id
+    print(b)
+    
+
+    my_data = Examregister(user_id=b,Exam_id=exam_id)
+    db.session.add(my_data) 
+    db.session.commit()
+    return redirect('/examdetails')
 
 
 

@@ -48,3 +48,11 @@ class Exam(db.Model, UserMixin):
     dept = db.Column(db.String(80))
   
     
+
+
+
+class Examregister(db.Model, UserMixin):
+    
+    id=db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, ForeignKey('register.id'))
+    Exam_id = db.Column(db.Integer, ForeignKey('exam.id'))
