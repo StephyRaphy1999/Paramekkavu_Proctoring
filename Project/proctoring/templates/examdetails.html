@@ -1,11 +1,18 @@
 {% extends 'layout.html' %} 
 {% block content %}
 
+{% if alert %}
 
+			<script>
+				alert("You have already Registered for this Exam!!!!!")
+			</script>
+{% endif %}
 <html>
 
 
- <head><title>Exam Details</title></head>
+ <head>
+<title>Exam Details</title>
+</head>
  <link rel="stylesheet" href="../static/css/view.css">
  <body>
     <h1 align="center"><u>EXAM DETAILS</u></h1>
@@ -21,7 +28,7 @@
             <th> ACTION</th>
             <th> DELETE</th>
         </tr>
-        {%for i in a%}
+        {%for i in n%}
         <tr align="center">
             <td>{{i.subname}}</td>
             <td>{{i.date}}</td>
@@ -46,7 +53,7 @@
             <th> SEMESTER</th>
             <th> REGISTER</th>
         </tr>
-        {%for i in b%}
+        {%for i in k%}
         <tr align="center">
             <td>{{i.subname}}</td>
             <td>{{i.date}}</td>

@@ -56,3 +56,5 @@ class Examregister(db.Model, UserMixin):
     id=db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, ForeignKey('register.id'))
     Exam_id = db.Column(db.Integer, ForeignKey('exam.id'))
+    user = relationship('Register', foreign_keys=[user_id])
+    exam = relationship('Exam', foreign_keys=[Exam_id])

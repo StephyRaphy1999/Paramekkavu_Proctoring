@@ -204,9 +204,9 @@ def examdetails():
     print("rid",rid.id)
     print("user_semester",rid.sem)
     print("user_department",rid.department)
-    b =Exam.query.filter_by(sem=rid.sem,dept=rid.department).all()
+    k =Exam.query.filter_by(sem=rid.sem,dept=rid.department).all() #change here
     print (b)
-    return render_template("examdetails.html",a=a,b=b)
+    return render_template("examdetails.html",a=a,k=k)
 
 
 @app.route('/editexam/<int:id>',methods=['GET', 'POST'])
@@ -245,23 +245,37 @@ def delete_exam(id):
 @app.route('/examregister/<int:id>',methods=['GET', 'POST'])
 def examregister(id):
     
-    a = Exam.query.get_or_404(id)
-    exam_id = a.id
+    n = Exam.query.get_or_404(id)
+    exam_id = n.id
     print(exam_id)
 
     b = current_user.id
     print(b)
+
+    c = Examregister.query.filter_by(user_id=b,Exam_id=exam_id).first()
+
+
+    rid = Register.query.filter_by(id = b).first()
+    k=Exam.query.filter_by(sem=rid.sem,dept=rid.department).all()
     
+    if c:
+        return render_template("examdetails.html",alert=True,k=k)
+    else:
+        my_data = Examregister(user_id=b,Exam_id=exam_id)
+        db.session.add(my_data) 
+        db.session.commit()
+        return redirect('/regexam')
 
-    my_data = Examregister(user_id=b,Exam_id=exam_id)
-    db.session.add(my_data) 
-    db.session.commit()
-    return redirect('/examdetails')
 
 
 
+@app.route('/regexam',methods=['GET', 'POST'])
+def regexam():
 
-
+    a = Examregister.query.filter_by(user_id=current_user.id)
+    print("current_user.id",current_user.id)
+ 
+    return render_template("regexam.html",a=a)
 
 
 
