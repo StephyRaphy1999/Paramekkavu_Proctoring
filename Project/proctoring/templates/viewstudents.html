@@ -1,0 +1,38 @@
+{% extends 'layout.html' %} 
+{% block content %}
+
+<html>
+
+
+ <head>
+<title>REGISTERED STUDENTS</title>
+</head>
+ <link rel="stylesheet" href="../static/css/view.css">
+ <body>
+    <h1 align="center"><u>REGISTERED STUDENTS</u></h1>
+    <table border="3" align="center" height="600px">
+        <tr align="center">
+            <th> NAME</th>
+            <th> SUBJECT NAME</th>
+            <th> DATE</th>
+            <!-- <th> TIME</th>
+            <th> DURATION</th> -->
+            <th> DEPARTMENT</th>
+            <th> SEMESTER</th>
+        </tr>
+        {% for i in a %}
+        <tr align="center">
+            <td>{{i.user.fname}} {{i.user.lname}}</td>
+            <td>{{i.exam.subname}}</td>
+            <td>{{i.exam.date}}</td>
+            <!-- <td>{{i.time}}</td>
+            <td>{{i.duration}}</td> -->
+            <td>{{i.exam.dept}}</td>
+            <td>{{i.exam.sem}}</td>
+        </tr>
+      {%endfor%}
+    </table>
+ </body>
+</html>
+
+{% endblock %}

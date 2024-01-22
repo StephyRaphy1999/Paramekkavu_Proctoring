@@ -76,13 +76,15 @@ def login():
     if request.method=="POST":
         email=request.form['email']
         password=request.form['password']
+       
+
 
 
         admin =Register.query.filter_by(email=email, password=password,usertype= 'admin').first()
         teacher =Register.query.filter_by(email=email, password=password,usertype= 'teacher').first()
         student =Register.query.filter_by(email=email, password=password,usertype= 'student').first()
-           
-           
+        
+        
         if admin:
             login_user(admin)
             print(admin.usertype)
@@ -110,7 +112,9 @@ def login():
 
         else:
             d="Invalid Username or Password!"
-            return render_template("login")
+            return render_template("login.html",alert=True,d=d)
+
+        
     return render_template("login.html")
 
 @app.route('/contact',methods=['GET', 'POST'])
@@ -205,7 +209,7 @@ def examdetails():
     print("user_semester",rid.sem)
     print("user_department",rid.department)
     k =Exam.query.filter_by(sem=rid.sem,dept=rid.department).all() #change here
-    print (b)
+    print (k)
     return render_template("examdetails.html",a=a,k=k)
 
 
@@ -278,7 +282,13 @@ def regexam():
     return render_template("regexam.html",a=a)
 
 
+@app.route('/viewstudents',methods=['GET', 'POST'])
+def viewstudents():
 
+    a = Examregister.query.all()
+    
+
+    return render_template("viewstudents.html",a=a)
 
 @app.route('/logout')
 @login_required
