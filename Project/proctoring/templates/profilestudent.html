@@ -1,0 +1,149 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+
+<head>
+<title> Profile </title>
+<!-- for-mobile-apps -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="keywords" content="Personal Profile Form Widget Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<!-- //for-mobile-apps -->
+<link href='//fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../static/profile/css/j-forms.css">
+<link href="../static/profile/css/style.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+
+
+
+
+    <div class="content">
+		<h1>PROFILE </h1>
+		<div class="main w3l">
+			<div class="im-g">
+				<img src="../static/profile/images/size.jpg" alt="">
+			</div>
+			<form method="post" class="contact-forms wthree">
+
+                {% if session['ut'] == "student" %}
+
+				<!-- end /.header-->
+
+					<!-- start name -->
+					<div class="first-line agileits">
+						<div class="span6 main-row">
+							<div class="input">
+								
+								<input type="text" id="fname" name="fname" placeholder="First name" required="" value="{{a.fname}}">
+							</div>
+						</div>
+						<div class="span6 main-row">
+							<div class="input">
+								
+								<input type="text" id="lname" name="lname" placeholder="Last name" required="" value="{{a.lname}}">
+								
+							</div>
+						</div>
+					</div>
+
+					
+					<!-- end name -->
+
+					<!-- start email phone -->
+					<div class="first-line agileits">
+						<div class="span6 main-row">
+							<div class="input">
+								
+								<input type="email" placeholder="Email" id="email" name="email" required="" value="{{a.email}}">
+							</div>
+						</div>
+						<div class="span6 main-row">
+							<div class="input">
+								
+								<input type="text" placeholder="Phone no." id="contact" name="contact" required="" value="{{a.contact}}">
+							</div>
+						</div>
+					</div>
+
+					<div class="main-row">
+						<div class="input">
+							
+							<input type="text" id="dob" name="dob" placeholder="Date of birth" required="" value="{{a.dob}}">
+							
+						</div>
+				</div>
+				<div class="main-row">
+							<div class="input">
+								
+								<input type="text" id="gender" name="gender" placeholder="Gender" required="" value="{{a.gender}}">
+								
+							</div>
+					</div>
+
+                    <div class="main-row">
+						
+						<input type="text" id="admission" name="admission" placeholder="Admission no." required="" value="{{a.admission}}">
+						
+					</div>
+
+                    <div class="main-row">
+							
+						<input type="text" id="department" name="department" placeholder="Department" required="" value="{{a.department}}">
+
+					</div>
+
+                    <div class="first-line agileits">
+						<div class="span8 main-row">
+							<div class="input">
+								
+								<input type="text" id="sem" placeholder="Semester" name="sem" required="" value="{{a.sem}}">
+							</div>
+						</div>
+						
+					</div>
+
+                    <div class="main-row">
+						<div class="input">
+							
+							<input type="text" id="password" name="password" placeholder="Password" required="" value="{{a.password}}">
+							
+						</div>
+				</div>
+                {% endif %}
+
+                
+               
+<div class="footer">
+    <button type="submit" class="primary-btn">Edit</button>
+    <!-- <button type="reset" class="secondary-btn">Reset</button> -->
+</div>
+<!-- end /.footer -->
+
+</form>
+<!-- </div>
+<p class="copy_rights">&copy; 2016 Personal Profile Form Widget. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>
+</div> -->
+<!-- Scripts -->
+<script src="../static/profile/js/jquery.1.11.1.min.js"></script>
+
+<!--[if lt IE 10]>
+<script src="j-folder/js/jquery.placeholder.min.js"></script>
+<![endif]-->
+
+<script>
+$(document).ready(function(){
+
+// Phone masking
+$('#phone').mask('(999) 999-9999', {placeholder:'x'});
+
+// Post code masking
+$('#post').mask('999-9999', {placeholder:'x'});
+
+});
+</script>
+</div>
+</body>
+{% endblock %}

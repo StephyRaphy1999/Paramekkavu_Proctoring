@@ -20,6 +20,9 @@ import pandas as pd
 import datetime
 from datetime import datetime
 import time
+import secrets
+from flask_mail import Message
+from . import mail, db  # Import your mail and db instances
 
 
 
@@ -70,6 +73,49 @@ def delete_teacher(id):
 def view():
     a =Register.query.filter_by(usertype="teacher").all()
     return render_template("view.html",a=a)
+
+
+
+@app.route('/profilestudent',methods=['GET', 'POST'])
+def profilestudent():
+    a =Register.query.filter_by(id=current_user.id).first()
+    if request.method == 'POST':
+        a.fname = request.form['fname']
+        a.lname= request.form['lname']
+        a.gender = request.form['gender']
+        a.dob = request.form['dob']
+        a.email = request.form['email']
+        a.contact= request.form['contact']
+        a.password = request.form['password']
+        a.department = request.form['department']
+        a.sem = request.form['sem']
+
+        db.session.commit()
+        return redirect('/profilestudent')
+    return render_template("profilestudent.html",a=a)
+
+@app.route('/profileteacher',methods=['GET', 'POST'])
+def profileteacher():
+    a =Register.query.filter_by(id=current_user.id).first()
+    if request.method == 'POST':
+        a.fname = request.form['fname']
+        a.lname= request.form['lname']
+        a.gender = request.form['gender']
+        a.dob = request.form['dob']
+        a.email = request.form['email']
+        a.contact= request.form['contact']
+        a.password = request.form['password']
+        a.department = request.form['department']
+        a.qualification = request.form['qualification']
+        a.experience = request.form['experience']
+
+        db.session.commit()
+        return redirect('/profileteacher')
+    return render_template("profileteacher.html",a=a)
+
+
+
+
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -289,6 +335,33 @@ def viewstudents():
     
 
     return render_template("viewstudents.html",a=a)
+
+@app.route('/forgotpassword', methods=['GET', 'POST'])
+def forgotpassword():
+    if request.method == 'POST':
+        email = request.form['email']
+        print(email)
+        a = Register.query.filter_by(email=email).first()
+        print(a)
+        password_length = 4
+
+        password = secrets.token_urlsafe(password_length)
+        print(password)
+        f_sendmail(email, password)
+        a.password = password
+        print(a.password)
+        db.session.commit()
+        return render_template("index.html", b_alert=True)
+    return render_template("forgotpassword.html")
+
+def f_sendmail(email, password):
+    print("hiii")
+    msg = Message('New password', recipients=[email])
+    print(msg)
+    msg.body = f'Your new password is: {password}'
+    mail.send(msg)
+
+
 
 @app.route('/logout')
 @login_required

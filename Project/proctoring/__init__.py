@@ -21,7 +21,16 @@ db = SQLAlchemy(app)
 
 login_manager = LoginManager(app) 
 
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USERNAME'] = 'deepakndasan@gmail.com'
+app.config['MAIL_USERNAME'] = 'deepakndasan@gmail.com'
+app.config['MAIL_PASSWORD'] = 'mvalxajnxqigzpts'
 
+app.config['MAIL_DEFAULT_SENDER'] = 'deepakndasan@gmail.com'
+mail = Mail(app)
 
 from proctoring import routes
 
