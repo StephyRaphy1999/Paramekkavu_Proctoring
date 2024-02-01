@@ -84,7 +84,7 @@ ul li {
     text-align: center;
     margin: 10px 0 0;
 }
-input[type="text"], input[type="email"] {
+input[type="text"], input[type="email"],input[type="number"],input[type="password"] {
     font-size: 15px;
     font-weight: 500;
     text-transform: capitalize;

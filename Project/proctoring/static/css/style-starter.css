@@ -2019,11 +2019,12 @@ progress {
   --bs-table-active-bg: rgba(0, 0, 0, 0.1);
   --bs-table-hover-color: #212529;
   --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
-  width: 100%;
+  width: 60%;
   margin-bottom: 1rem;
+  margin: auto;
   color: #212529;
   vertical-align: top;
-  border-color: #dee2e6;
+  border-color: #030608;
 }
 
 .table> :not(caption)>*>* {

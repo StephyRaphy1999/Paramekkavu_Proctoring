@@ -4,9 +4,15 @@
 <head>    
 
 	
-		{% if alert %}
+		{% if alert == 1 %}
 			<script>
 				alert("Email id already exist!!!!!")
+			</script>
+		{% endif %}
+	
+		{% if alert == 2%}
+			<script>
+				alert("Admission number already exist!!!!!")
 			</script>
 		{% endif %}
 	
@@ -31,7 +37,7 @@
 <h1>Register</h1>
 </div>
 <div class="w3ls-form">
-<form method="POST">
+<form method="POST" >
 		<div class="w3l-last-grid1">
 			<div class="w3l-grid1">
 				<label class="text">First name</label>
@@ -79,10 +85,10 @@
 				</div>
 			</div>
 			<div class="w3l-grid2">
-				<label class="text">phone number</label>
+				<label class="text" for="phone">phone number</label>
 				<div class="w3l-div">
 					<i class="fa fa-phone" aria-hidden="true"></i>
-					<input type="text" name="contact" placeholder="phone number" required=""/>
+					<input type="number"  name="contact" placeholder="phone number" required="" id="phone"/>
 				</div>
 			</div>
 			<div class="clear"></div>
@@ -92,7 +98,7 @@
 				<label class="text">Password</label>
 				<div class="w3l-div">
 					<i class="fa-password" aria-hidden="true"></i>
-					<input type="text" name="password" placeholder="Enter the Password" required=""/>
+					<input type="password" name="password" placeholder="Enter the Password" required=""/>
 				</div>
 			</div>
 			<div class="w3l-grid2">	
@@ -160,10 +166,26 @@
 </div>
 <!-- <footer>&copy; 2018 library membership Form. All Rights Reserved | Design by <a href="http://w3layouts.com/"> W3layouts</a></footer> -->
 
-<!-- Default-JavaScript --> <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<!-- Default-JavaScript --> <script type="text/javascript" src="../static/register/js/jquery-2.1.4.min.js"></script>
+
+
+<script type="text/javascript" src="../static/register/js/validation.js"></script>
+   <!-- <script>
+	 function contact(){
+		alert("hiiii")
+		return false;
+
+	a = document.getElementById("phone").value
+	if(a.length!=10){
+		alert("Phone numbers should be 10 characters long")
+		return false
+    }
+}
+   </script> -->
+
 
 <!-- Calendar -->
-<script src="js/jquery-ui.js"></script>
+<!-- <script src="../static/register/js/jquery-ui.js"></script> -->
 	<script>
 		$(function() {
 		$( "#datepicker,#datepicker1" ).datepicker();

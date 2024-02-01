@@ -183,9 +183,14 @@ def add_register():
         admission = request.form['admission']
         department = request.form['department']
         sem = request.form['sem']
-        a = Register.query.filter_by(email=email).first()
+        a = Register.query.filter_by(email=email).first() 
+        b = Register.query.filter_by(admission=admission).first()
+
         if a:
-            return render_template("register.html",alert=True)
+            return render_template("register.html",alert=1)
+        elif b:
+            return render_template("register.html",alert=2)
+
         else:
 
             my_data = Register(fname=fname,lname=lname,gender=gender,dob=dob,email=email,contact=contact,password=password,admission=admission,department=department,sem=sem,usertype="student")
